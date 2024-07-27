@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'home/sos.css' %}">
+</head>
+<body>
+    {% include 'includes/header.html' %}
+    <div class="sos-outer">
+        <div class="sos-mid">
+            {% if role == 'individual' %}
+            
+                <!-- {{ sos_message_sent }} -->
+                {% include 'home/sos_form.html' %}
+            {% else %}
+                {% for message in sos_messages %}
+                    <div class="sos-main">
+                        <h2>&#x26D1 Rescue {{ message.sos_message.number_of_people }} people</h2>
+                        <a target="_blank" href="{{ message.sos_message.maps_location }}"><i class="fa fa-map-marker" style="color:purple"></i> Map Location</a>
+                        {% if message.sos_message.medical_assistance %}
+                            <p>Medical Assistance required</p>
+                        {% endif %}
+                        <p>{{ message.sos_message.extra_message }}</p>
+                        <form action="{% url 'rescued' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ role }}" name="role">
+                            <input type="hidden" value="{{ message.id }}" name="rescued_id">
+                            <button class="sos-button">Rescued &#10004</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    {% include 'includes/footer.html' %}
+</body>
+</html>

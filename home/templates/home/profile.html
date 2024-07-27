@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'home/profile.css' %}">
+</head>
+<body>
+    {% include 'includes/header.html' %}
+    <div class="prof-outer">
+        <h5>{{ error_message }}</h5>
+        <div class="prof-mid">
+            <form action="{% url 'profile' %}" method="POST" class="prof-form">
+                {% csrf_token %}
+                <div class="lab">
+                    <label> &#129466 How do you identify yourself?</label>
+                </div>
+                <div class="roling">
+                    <select name="role">
+                        {% for category in categories %}
+                            {% if category == role %}
+                                <option selected>{{ category }}</option>
+                            {% else %}
+                                <option>{{ category }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <button class="prof-button">
+                        Save &#10150
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% include 'includes/footer.html' %}
+</body>
+</html>

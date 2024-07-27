@@ -1,0 +1,56 @@
+.report-outer{
+    background-color: rgb(245,245,255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: large;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.report-mid{
+    border-radius: 0.5rem;
+    background-color: #3385ff;
+    width: 20rem;
+    padding: 1rem;
+    margin: 1rem;
+    margin-bottom: 1rem;
+}
+.report-mid form{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+.report-name,.report-photo,.report-date,.report-mark,.report-missingdate,.report-place,.button{
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+.button{
+        margin-top: 0.5rem;
+        margin-left: 20%;
+        margin-right: 20%;
+}
+.report-button{
+    border-radius: 0.5rem;
+    font-size: large;
+    text-align: center;
+    padding: 0.7rem;
+    background-color: #df2b1b;
+    border: none;
+}
+.report-mid:hover{
+    transform: scale(1.02);
+    transition: 0.5s;
+    box-shadow: 0px 0px 30px #91a4e4;
+}
+input
+{
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.5rem;
+    background-color: whitesmoke;
+}
+label{
+    margin-bottom: 0.3rem;
+}

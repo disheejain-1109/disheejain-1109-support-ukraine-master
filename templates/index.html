@@ -1,0 +1,31 @@
+{% load static %}
+{% load socialaccount %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with google</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <!-- index of html is for login page.. -->
+    {% include 'includes/header.html' %}
+    <div class="index-outer">
+        <div class="index-inner">  
+            <!-- {% provider_login_url 'google' %}: This is a Django template tag provided by django-allauth. It generates the URL for logging in with a Google account. -->
+
+            <!-- provider_login_url: This template tag is used to get the login URL for a specific social provider.
+
+            'google': This specifies that the login URL should be for Google. -->
+
+            <!-- When a user clicks on this link, they will be redirected to the Google login page to authenticate their account. -->
+            <a href="{% provider_login_url 'google'%}">Login with Google</a>
+            <img src="{% static 'google_logo.webp' %}" alt="_blank" width="40">
+        </div>
+    </div>
+    {% include 'includes/footer.html' %}
+</body>
+</html>

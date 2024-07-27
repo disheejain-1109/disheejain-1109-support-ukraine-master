@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet"  href="{% static 'includes/header.css' %}">
+</head>
+<body>
+    <div class="header-out">
+            <span class="header-in-left">
+               <img src="{% static 'includes/logo.webp' %}">
+            </span>
+            <span class="header-in-mid">
+                <h1>SOS Ukraine</h1>
+            </span>
+            <span class="header-in-right">
+                {% if user.is_authenticated %} 
+                <!-- djnago inbuilt function provided by user model -->
+                    <span><a href="{% url 'soshome' %}">Home</a></span>
+                    <!-- this generated url for the view names soshome -->
+                    <span><a href="{% url 'lost_and_found' %}">Lost and Found</a></span>
+                    <!-- this generated url for the view names lost_and_found-->
+                    <span><a href="{% url 'profile' %}">My Profile</a></span>
+                    <span>
+                        <form action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button class="head-button">Logout</button>
+                        </form>
+                        <!-- <a href="{% url 'account_logout' %}">LogOut</a> -->
+                    </span>
+                {% endif %}
+            </span>
+    </div>
+</body>
+</html>

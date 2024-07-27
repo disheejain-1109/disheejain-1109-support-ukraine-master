@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'home/sos_form.css' %}">
+</head>
+<body>
+    <div class="outer">
+        <div class="mid">
+            <form action="{% url 'soshome' %}" method="POST">
+                {% csrf_token %}
+                <div class="nopeople">
+                    <label> &#128101 Number of people:</label>
+                    <input type="number" placeholder="Number of people" name="number_of_people" min="1" value="1" required>
+                </div>
+                <div class="assistance">
+                    <label> &#127973 Do you need medical assistance?</label>
+                    <select name="medical_assistance" required>
+                        <option selected>No</option>
+                        <option>Yes</option>
+                    </select>
+                </div>
+                <div class="message">
+                    <label> <span style="color: black">&#x2709</span> Any extra message:</label>
+                    <input type="text" placeholder="Message" name="message">
+                </div>
+                <div class="location">
+                    <label> <i class="fa fa-map-marker" style="color: black;"></i> Google maps Location link:</label>
+                    <input type="text" placeholder="https://goo.gl/maps/gv5Vxm81GyDyg4Gd8" name="maps_location" required>
+                </div>
+                <div class="button">
+                    <button class="sos-form-button">Send <i class="fa fa-telegram"></i> </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

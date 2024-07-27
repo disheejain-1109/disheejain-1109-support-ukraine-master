@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'lost_and_found/report_missing.css' %}">
+</head>
+<body>
+    {% include 'includes/header.html' %}
+    <div class="report-outer">
+        <div class="report-mid">
+            <form action="{% url 'report_missing' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="report-name">
+                    <label>&#128393 Name:</label>
+                    <input type="text" name="name" placeholder="Enter Name" required>
+                </div>
+                <div class="report-photo">
+                    <label>&#128248 Photo:</label>
+                    <input type="file" name="image" required>
+                </div>
+                <div class="report-date">
+                    <label>👶 Date of birth:</label>
+                    <input type="date" name="date_of_birth" required>
+                </div>
+                <div class="report-mark">
+                    <label>💉 Birth mark:</label>
+                    <input type="text" name="birth_mark" placeholder="Enter Data here">
+                </div>
+                <div class="report-missingdate">
+                    <label>🗓 Date since missing:</label>
+                    <input type="date" name="date_missing" required>
+                </div>
+                <div class="report-place">
+                    <label><i class="fa fa-map-marker"></i> Place where seen last time:</label>
+                    <input type="text" name="place_seen_last_time" placeholder="Enter Data here" required>
+                </div>
+                <div class="button"> 
+                    <button class="report-button">Report Missing <i class="fa fa-telegram"></i></button>
+                </div>
+            </form>
+        </div>
+    </div> 
+    {% include 'includes/footer.html' %}
+</body>
+</html>
